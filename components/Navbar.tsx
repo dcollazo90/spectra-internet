@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { business } from "@/lib/data";
-import { IconZap, IconMenu, IconX } from "./icons";
+import { IconMenu, IconX } from "./icons";
 
 const links = [
   { label: "Planes",     href: "#planes"     },
@@ -12,6 +12,36 @@ const links = [
   { label: "Negocios",   href: "#negocios"   },
   { label: "Contacto",   href: "#contacto"   },
 ];
+
+/* ─── Logo SVG inline — fondo transparente, escala bien en navbar ─── */
+function SpectraLogo({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 900 300"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Spectra Networks"
+      role="img"
+    >
+      {/* Símbolo: arcos + S */}
+      <g transform="translate(120, 60)">
+        {/* Arco exterior izquierdo */}
+        <path d="M 6 90 A 82 82 0 0 1 6 10"   fill="none" stroke="#E85D0A" strokeWidth="10" strokeLinecap="round"/>
+        {/* Arco interior izquierdo */}
+        <path d="M 26 72 A 48 48 0 0 1 26 28"  fill="none" stroke="#E85D0A" strokeWidth="10" strokeLinecap="round"/>
+        {/* S central */}
+        <text x="64" y="68" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="44" fill="#E85D0A" textAnchor="middle">S</text>
+        {/* Arco interior derecho */}
+        <path d="M 102 28 A 48 48 0 0 1 102 72" fill="none" stroke="#E85D0A" strokeWidth="10" strokeLinecap="round"/>
+        {/* Arco exterior derecho */}
+        <path d="M 122 10 A 82 82 0 0 1 122 90" fill="none" stroke="#E85D0A" strokeWidth="10" strokeLinecap="round"/>
+      </g>
+      {/* Wordmark */}
+      <text x="290" y="136" fontFamily="'Inter', sans-serif" fontWeight="800" fontSize="80"  fill="#E85D0A" letterSpacing="-2">SPECTRA</text>
+      <text x="294" y="200" fontFamily="'Inter', sans-serif" fontWeight="400" fontSize="36"  fill="#E85D0A" letterSpacing="16">NETWORKS</text>
+    </svg>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,24 +64,18 @@ export default function Navbar() {
         className={[
           "fixed top-0 inset-x-0 z-[999] transition-all duration-300",
           scrolled
-            ? "bg-white/90 backdrop-blur-2xl shadow-[0_1px_0_rgba(0,0,0,.06)] py-2.5"
-            : "py-4",
+            ? "bg-white/90 backdrop-blur-2xl shadow-[0_1px_0_rgba(0,0,0,.06)] py-2"
+            : "py-3.5",
         ].join(" ")}
       >
-        <div className="max-w-[1160px] mx-auto px-5 lg:px-8 flex items-center justify-between h-9">
+        <div className="max-w-[1160px] mx-auto px-5 lg:px-8 flex items-center justify-between h-10">
 
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group shrink-0">
-            <span className="w-6 h-6 bg-orange-500/10 rounded-md flex items-center justify-center group-hover:bg-orange-500/15 transition-colors duration-150">
-              <IconZap className="w-3.5 h-3.5 text-orange-500" />
-            </span>
-            <span className="font-semibold text-[0.875rem] tracking-[-0.02em] leading-none">
-              <span className="text-gray-900">Spectra</span>
-              <span className="text-orange-500"> Networks</span>
-            </span>
+          {/* Logo real */}
+          <a href="#" className="shrink-0 hover:opacity-85 transition-opacity duration-150" aria-label="Spectra Networks — Inicio">
+            <SpectraLogo className="h-8 w-auto" />
           </a>
 
-          {/* Desktop nav — centered, tight */}
+          {/* Desktop nav */}
           <nav className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2">
             {links.map((l) => (
               <a
@@ -73,14 +97,12 @@ export default function Navbar() {
               {business.phone}
             </a>
 
-            {/* CTA — small pill, fills on hover via pseudo-element */}
+            {/* CTA pill — fill on hover */}
             <a
               href="#cobertura"
               className="group relative overflow-hidden inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full border border-orange-400/50 text-[0.73rem] font-semibold text-orange-600 hover:text-white transition-colors duration-200"
             >
-              <span
-                className="absolute inset-0 bg-orange-500 origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-200 ease-out rounded-full"
-              />
+              <span className="absolute inset-0 bg-orange-500 origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-200 ease-out rounded-full" />
               <span className="relative flex items-center gap-1">
                 <svg className="w-2.5 h-2.5" viewBox="0 0 10 10" fill="currentColor">
                   <circle cx="5" cy="5" r="2"/>
@@ -110,7 +132,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0  }}
             exit={{   opacity: 0, y: -4  }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className="fixed top-[54px] inset-x-0 z-[998] bg-white/98 backdrop-blur-xl border-b border-gray-100/80 shadow-[0_6px_24px_rgba(0,0,0,.07)] px-5 flex flex-col lg:hidden"
+            className="fixed top-[56px] inset-x-0 z-[998] bg-white/98 backdrop-blur-xl border-b border-gray-100/80 shadow-[0_6px_24px_rgba(0,0,0,.07)] px-5 flex flex-col lg:hidden"
           >
             {links.map((l, i) => (
               <motion.a
