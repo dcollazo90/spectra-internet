@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { business } from "@/lib/data";
-import { IconMapPin, IconWhatsApp, IconPhone, IconZap } from "./icons";
+import { IconMapPin, IconWhatsApp, IconPhone } from "./icons";
 
 export default function FinalCTA() {
   const waUrl = `https://wa.me/${business.whatsapp}?text=${business.whatsappDefault}`;
@@ -87,14 +87,25 @@ export default function FinalCTA() {
 
             {/* Brand */}
             <div>
-              <div className="flex items-center gap-[0.55rem] mb-[0.65rem]">
-                <span className="w-[28px] h-[28px] bg-orange-500/10 rounded-[8px] flex items-center justify-center">
-                  <IconZap className="w-[14px] h-[14px] text-orange-500" />
-                </span>
-                <span className="font-semibold text-[0.95rem]">
-                  <span className="text-white">Spectra</span>
-                  <span className="text-orange-500"> Networks</span>
-                </span>
+              {/* Logo SVG — versión footer (fondo oscuro, color naranja original) */}
+              <div className="mb-[0.75rem]">
+                <svg
+                  viewBox="0 0 900 300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-9 w-auto"
+                  aria-label="Spectra Networks"
+                  role="img"
+                >
+                  <g transform="translate(120, 60)">
+                    <path d="M 6 90 A 82 82 0 0 1 6 10"   fill="none" stroke="#E85D0A" strokeWidth="10" strokeLinecap="round"/>
+                    <path d="M 26 72 A 48 48 0 0 1 26 28"  fill="none" stroke="#E85D0A" strokeWidth="10" strokeLinecap="round"/>
+                    <text x="64" y="68" fontFamily="'Inter', sans-serif" fontWeight="900" fontSize="44" fill="#E85D0A" textAnchor="middle">S</text>
+                    <path d="M 102 28 A 48 48 0 0 1 102 72" fill="none" stroke="#E85D0A" strokeWidth="10" strokeLinecap="round"/>
+                    <path d="M 122 10 A 82 82 0 0 1 122 90" fill="none" stroke="#E85D0A" strokeWidth="10" strokeLinecap="round"/>
+                  </g>
+                  <text x="290" y="136" fontFamily="'Inter', sans-serif" fontWeight="800" fontSize="80" fill="#E85D0A" letterSpacing="-2">SPECTRA</text>
+                  <text x="294" y="200" fontFamily="'Inter', sans-serif" fontWeight="400" fontSize="36" fill="#E85D0A" letterSpacing="16">NETWORKS</text>
+                </svg>
               </div>
               <p className="text-[0.82rem] text-white/30 leading-[1.7] max-w-[260px]">
                 Internet rápido y confiable para hogares y negocios en Ponce, Puerto Rico. Sirviendo la comunidad desde {business.founded}.
