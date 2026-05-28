@@ -14,7 +14,7 @@ function NetworkCanvas() {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = ref.current;
+  const canvas = ref.current as HTMLCanvasElement;
     if (!canvas) return;
     const ctx = canvas.getContext("2d")!;
 
