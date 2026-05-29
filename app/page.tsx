@@ -7,6 +7,7 @@ import CoverageForm    from "@/components/CoverageForm";
 import TechSection     from "@/components/TechSection";
 import WhySpectra      from "@/components/WhySpectra";
 import Business        from "@/components/Business";
+import SpeedTest       from "@/components/SpeedTest";
 import Testimonials    from "@/components/Testimonials";
 import FAQ             from "@/components/FAQ";
 import FinalCTA        from "@/components/FinalCTA";
@@ -25,6 +26,7 @@ export default function Home() {
         <TechSection />
         <WhySpectra />
         <Business />
+        <SpeedTest />
         <Testimonials />
         <FAQ />
         <FinalCTA />
